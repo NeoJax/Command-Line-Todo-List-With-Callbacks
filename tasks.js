@@ -2,10 +2,10 @@ function tasks(){
   const fs = require('fs');
   const command = process.argv[2];
   const string = process.argv[3];
-  const add = require("./add.js");
-  const complete = require("./complete.js");
-  const del = require("./delete.js");
-  const list = require("./list.js");
+  const add = require("./commands/add.js");
+  const complete = require("./commands/complete.js");
+  const del = require("./commands/delete.js");
+  const list = require("./commands/list.js");
 
   function getData() {
     return new Promise((resolve, reject) => {
@@ -36,8 +36,14 @@ function tasks(){
       writeData(objArr);
     } else if (command === "complete") {
       objArr = complete.complete(objArr, string);
+      writeData(objArr);
     } else if (command === "delete") {
       objArr = del.del(objArr, string);
+      if(objArr === undefined){
+        writeData([{}]);
+      } else {
+        writeData(objArr);
+      }
     } else if (command === "list") {
       list.list(objArr, string);
     } else if (command === "reset") {
@@ -48,8 +54,9 @@ function tasks(){
           "complete": false
         }
       ])
+    } else {
+      throw new Error("Command is not one of the listed commands being add, complete, delete, or list.")
     }
-    console.log(objArr);
   })
 }
 

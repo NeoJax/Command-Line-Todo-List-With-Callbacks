@@ -8,7 +8,7 @@ let list = function(objArr){
     }
   }
   for(let i = 0; i < currentTasks.length; i++){
-    console.log(currentTasks[i].id, currentTasks[i].task);
+    console.log(currentTasks[i].id + "  " + currentTasks[i].task);
   }
   console.log("You have", currentTasks.length, "tasks");
 }
