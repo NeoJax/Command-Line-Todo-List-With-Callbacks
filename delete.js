@@ -1,4 +1,4 @@
-let del = function(){
+let del = function(objArr, string){
 
 }
 

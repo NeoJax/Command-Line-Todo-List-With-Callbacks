@@ -1,4 +1,4 @@
-let complete = function(){
+let complete = function(objArr, string){
 
 }
 
